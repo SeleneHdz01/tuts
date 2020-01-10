@@ -1,14 +1,8 @@
 <?php
+include('config/db_connect.php');
 //include('ninjas.php');
 //require('ninjas.php');
 //echo 'end of php';
-/**MySQLi connect to DB */
-$conn = mysqli_connect('localhost', 'selene', 'SelHdz_15', 'sel_bd');
-
-/**Check connection */
-if(!$conn){
-   echo 'connection error: ' . mysqli_connect();
-}
 
 /**Write query from all pizza */
 $sql = 'SELECT title, ingredients, id FROM pizzas ORDER BY created_at';
@@ -44,7 +38,7 @@ mysqli_close($conn);
                   <div class="card-content center">
                      <h6><?php echo htmlspecialchars($pizza['title']); ?></h6>
                      <ul>
-                        <?php foreach (explode(',',$pizza['ingredients']) as $ingre):?>
+                        <?php foreach (explode(',',$pizza['ingredients']) as $ingre) : ?>
                            <li><?php echo htmlspecialchars($ingre);?></li>
                         <?php endforeach;?>
                      </ul>
@@ -56,9 +50,9 @@ mysqli_close($conn);
                </div>
             </div>
          <?php endforeach;?>
-         <?php if(count($pizza) > 1):?>
+         <?php if(count($pizza) >= 1): ?>
                <p>There are 3 or more pizzas</p>
-            <?php else:?>
+            <?php else: ?>
                <p>there are less than 3 pizzas</p>
             <?php endif?>
       </div>
