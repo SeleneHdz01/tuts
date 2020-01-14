@@ -1,6 +1,6 @@
 <?php 
 /**MySQLi connect to DB */
-$conn = mysqli_connect('localhost', 'selene', 'SelHdz_15', 'sel_bd');
+$conn = mysqli_connect('localhost', 'selene', 'SelHdz_15', 'sel_pizza');
 
 /**Check connection */
 if(!$conn){
