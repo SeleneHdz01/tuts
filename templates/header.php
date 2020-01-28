@@ -1,3 +1,21 @@
+<?php 
+
+session_start();
+
+/**Ejemplo de sesión */
+//$_SESSION['name'] = 'Selene';
+
+if($_SERVER['QUERY_STRING'] == 'noname'){
+    unset($_SESSION['name']);
+    //session_unset();
+}
+
+$name = $_SESSION['name'] ?? 'Visitante';
+
+    // Get cookie
+    $gender = $_COOKIE['gender'] ?? 'Unknow';
+?>
+
 <head>
 <title>Sel pizza</title>
 <!-- Compiled and minified CSS -->
@@ -31,6 +49,9 @@
 <div class="container">
     <a href="index.php" class="left brand-logo brand-text">Sel pizza</a>
     <ul id="nav-mobile" class="right hide-on-small-and-down">
+    <li class="grey-text">Hello <?php echo htmlspecialchars($name); ?> 
+    <li class="grey-text">(<?php echo htmlspecialchars($gender); ?> 
+    )</li>
     <li>
         <a href="add.php" class="btn brand z-depth-0">Add a Pizza</a>
     </li>
